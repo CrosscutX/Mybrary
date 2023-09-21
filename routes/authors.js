@@ -10,7 +10,6 @@ router.get("/", async (req, res) => {
   }
   try {
     const authors = await Author.find(searchOptions);
-    console.log(authors);
     res.render("authors/index", { authors: authors, searchOptions: req.query });
   } catch {
     res.redirect("/");
@@ -36,19 +35,6 @@ router.post("/", async (req, res) => {
       errorMessage: "Error creating Author",
     });
   }
-
-  // author
-  //   .save()
-  //   .then((newAuthor) => {
-  //     // res.redirect(`authors/${newAuthor.id}`)
-  //     res.redirect("authors");
-  //   })
-  //   .catch((err) => {
-  //     res.render("authors/new", {
-  //       author: author,
-  //       errorMessage: "Error creating Author",
-  //     });
-  //   });
 });
 
 module.exports = router;
